@@ -31,10 +31,13 @@ namespace CoreProjectWithSwagger
         {
             // Add framework services.
             services.AddMvc();
-
             services.AddSwaggerGen(c =>
             {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+
+                // on récupère le chemin vers notre fichier de documentation
                 var filePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "CoreProjectWithSwagger.xml");
+                // on passe notre fichier à Swashbuckle pour qu'il puisse l'exploiter
                 c.IncludeXmlComments(filePath);
             });
         }
